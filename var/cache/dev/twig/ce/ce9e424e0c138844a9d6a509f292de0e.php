@@ -177,7 +177,26 @@ class __TwigTemplate_6909bc24a183c5a09f6911c31bea447b extends Template
 \t\t\t\t\t\t\t\t<a href=\"";
         // line 56
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("panier_vider");
-        echo "\" class=\"btn btn-danger\">Vider</a>
+        echo "\" class=\"btn btn-danger\">Vider le panier</a>
+\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t<td colspan=\"5\" class=\"col-12 text-center\">
+\t\t\t\t\t\t\t\t";
+        // line 61
+        if (((isset($context["total"]) || array_key_exists("total", $context) ? $context["total"] : (function () { throw new RuntimeError('Variable "total" does not exist.', 61, $this->source); })()) > 0)) {
+            // line 62
+            echo "\t\t\t\t\t\t\t\t\t<a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_plats");
+            echo "\" class=\"col-2 mx-5 btn btn-success\">Valider la commande</a>
+\t\t\t\t\t\t\t\t";
+        }
+        // line 64
+        echo "
+\t\t\t\t\t\t\t\t<a href=\"";
+        // line 65
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_plats");
+        echo "\" class=\"col-2 mx-5 btn btn-success\">Retour aux plats</a>
 \t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t</tr>
 \t\t\t\t\t</tfoot>
@@ -207,7 +226,7 @@ class __TwigTemplate_6909bc24a183c5a09f6911c31bea447b extends Template
 
     public function getDebugInfo()
     {
-        return array (  179 => 56,  173 => 53,  166 => 48,  155 => 42,  146 => 38,  142 => 37,  138 => 36,  132 => 33,  128 => 32,  124 => 31,  120 => 30,  117 => 29,  112 => 28,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  198 => 65,  195 => 64,  189 => 62,  187 => 61,  179 => 56,  173 => 53,  166 => 48,  155 => 42,  146 => 38,  142 => 37,  138 => 36,  132 => 33,  128 => 32,  124 => 31,  120 => 30,  117 => 29,  112 => 28,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -267,7 +286,16 @@ class __TwigTemplate_6909bc24a183c5a09f6911c31bea447b extends Template
 \t\t\t\t\t\t\t<td>{{ total}}
 \t\t\t\t\t\t\t\t&euro;</td>
 \t\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t\t<a href=\"{{ path ('panier_vider') }}\" class=\"btn btn-danger\">Vider</a>
+\t\t\t\t\t\t\t\t<a href=\"{{ path ('panier_vider') }}\" class=\"btn btn-danger\">Vider le panier</a>
+\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t<td colspan=\"5\" class=\"col-12 text-center\">
+\t\t\t\t\t\t\t\t{% if total > 0 %}
+\t\t\t\t\t\t\t\t\t<a href=\"{{ path ('app_plats') }}\" class=\"col-2 mx-5 btn btn-success\">Valider la commande</a>
+\t\t\t\t\t\t\t\t{% endif %}
+
+\t\t\t\t\t\t\t\t<a href=\"{{ path ('app_plats') }}\" class=\"col-2 mx-5 btn btn-success\">Retour aux plats</a>
 \t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t</tr>
 \t\t\t\t\t</tfoot>
@@ -277,6 +305,6 @@ class __TwigTemplate_6909bc24a183c5a09f6911c31bea447b extends Template
 \t\t</section>
 \t</div>
 {% endblock %}
-", "panier/index.html.twig", "/home/test/Bureau/Symfony/monProjet/templates/panier/index.html.twig");
+", "panier/index.html.twig", "/home/test/Bureau/symfony_district/templates/panier/index.html.twig");
     }
 }

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<h1 class="mt-5" style="color: black;">Utilisateur</h1>
+
+	<div class="row text-center">
+		{{ form_start(registrationForm) }}
+
+		{# <div class="row"> #}
+		<div class="col-2 mx-auto mb-2 mt-4">
+			{{ form_row(registrationForm.email, {'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="col-2 mx-auto mb-2 mt-4">
+			{{ form_row(registrationForm.plainPassword, {'label': 'Mot de passe : ', 'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
+
+			<div class="col-8 mx-auto mb-2 mt-4" style="color: black;">
+				{{ form_row(registrationForm.agreeTerms, {'label': 'Accepter les conditions', 'label_attr': {'class': 'txt_contact'}}) }}
+			</div>
+		</div><br>
+
+		<button type="submit" class="btn btn-primary">Comfirmer</button>
+		{{ form_end(registrationForm) }}
+	</div>
+
+{% endblock %}

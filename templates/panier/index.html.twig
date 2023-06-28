@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<section class="row">
+			<div class="col-12">
+
+				<div class="col-2 col-xs-12 mx-auto my-5 cat_count rounded p-3">
+					<h1>Panier</h1>
+				</div>
+
+				<table class="table col-12 m-0 rounded">
+
+					<thead>
+						<tr>
+							<th>Plat</th>
+							<th>Prix</th>
+							<th>Quantité</th>
+							<th>Total</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{% for item in data %}
+							<tr>
+								<td>{{ item.plat.libelle }}</td>
+								<td>{{ item.plat.prix }}</td>
+								<td>{{ item.quantite }}</td>
+								<td>{{ item.quantite * item.plat.prix}}
+									&euro;</td>
+								<td>
+									<a href="{{ path ('panier_add', {id: item.plat.id}) }}" class="btn btn-success">+</a>
+									<a href="{{ path ('panier_remove', {id: item.plat.id}) }}" class="btn btn-warning">-</a>
+									<a href="{{ path ('panier_delete', {id: item.plat.id}) }}" class="btn btn-danger">Supprimer</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="5" style="color: red">
+									<strong>Votre panier est vide</strong>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+
+					<tfoot>
+						<tr>
+							<td colspan="3">Total</td>
+							<td>{{ total}}
+								&euro;</td>
+							<td>
+								<a href="{{ path ('panier_vider') }}" class="btn btn-danger">Vider</a>
+							</td>
+						</tr>
+					</tfoot>
+
+				</table>
+			</div>
+		</section>
+	</div>
+{% endblock %}

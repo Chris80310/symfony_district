@@ -6,6 +6,7 @@ use App\Repository\DetailRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\PlatRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,6 +42,25 @@ class AccueilController extends AbstractController
             'categories' => $categories,
             'plats' => $plats,
             'top3plat' => $top3plat
+        ]);
+    }
+
+    // Barre de recherche : 
+
+    #[Route('/search', name: 'app_search')]
+    public function search(PlatRepository $platRepo, Request $request): Response
+    {
+        $search = $request->request->get('search');
+        $plat = $platRepo->findSearch($search);
+        if ($plat) {
+            $this->addFlash('success', "Votre recherche a retourné " . count($plat) . " résultats.");
+        } else {
+            $this->addFlash('warning', "Votre recherche n'a pas abouti.");
+        }
+
+        return $this->render('accueil/search.html.twig', [
+            'controller_name' => 'AccueilController',
+            'plat' => $plat,
         ]);
     }
 }

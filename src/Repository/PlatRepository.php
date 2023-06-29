@@ -39,11 +39,29 @@ class PlatRepository extends ServiceEntityRepository
         }
     }
 
+    // Plats par catégories :
+
     public function platsParCat($id): array
     {
         return $this->createQueryBuilder('p')
             ->where('p.categorie = :id')
             ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    }
+
+    // Barre de recherche :
+
+    public function findSearch($search): array
+    {
+        $libelle = '%' . $search . '%';
+        $description = '%' . $search . '%';
+
+        return $this->createQueryBuilder('p')
+
+            ->andwhere('p.libelle like :libelle')
+            ->orWhere('p.description like :description')
+            ->setParameters([':description' => $description, ':libelle' => $libelle])
             ->getQuery()
             ->getResult();
     }

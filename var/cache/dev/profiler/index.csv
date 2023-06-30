@@ -1436,3 +1436,12 @@ aa3745,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1687958405,613ff5,5
 f72cc9,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1687958479,615155,500
 615155,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1687958479,,500
 0a0ed7,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1687958490,,200
+0f36e5,127.0.0.1,GET,https://127.0.0.1:8000/index.php/,1688117446,,200
+d4a800,127.0.0.1,GET,https://127.0.0.1:8000/index.php/plat/1,1688117448,,200
+67b847,127.0.0.1,GET,https://127.0.0.1:8000/index.php/detail_plat/1,1688117449,,200
+3bccc5,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier/add/1,1688117451,,302
+e4ce94,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1688117451,,200
+3191cf,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier/vider,1688117453,,302
+1b5633,127.0.0.1,GET,https://127.0.0.1:8000/index.php/panier,1688117453,,200
+99ee93,127.0.0.1,GET,https://127.0.0.1:8000/index.php/,1688117454,,200
+4caad1,127.0.0.1,GET,https://127.0.0.1:8000/index.php/detail_plat/2,1688117456,,200

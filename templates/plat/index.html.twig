@@ -6,11 +6,12 @@
 {% block body %}
 
 
-	<div class="container col-xs-7 col-12 div_cat mt-5 py-5">
+	<div
+		class="container col-xs-7 col-12 div_cat mt-5 py-5">
 
-		<div class="col-xs-4 col-4 text-center mx-auto my-5 cat_count rounded p-3">
-			<h1>Nos plats ({{ plats | length }})</h1>
-		</div>
+		{# <div class="col-xs-4 col-4 text-center mx-auto my-5 cat_count rounded p-3">
+					<h1>Nos plats ({{ plats | length }})</h1>
+				</div> #}
 
 		<div class="d-flex flex-wrap liste_cat">
 			{% for plat in plats %}
@@ -20,7 +21,7 @@
 						<a
 							href="{{path('app_detail_plat', {id: plat.id})}}" style="text-decoration:none">
 							<!-- affichage des noms de catégories -->
-							<h5 class="card-title text-center">
+							<h5 class="card-title text-center my-2">
 								<strong>"{{ plat.libelle |upper }}"</strong>
 							</h5>
 							<!-- partie inférieure avec l'image -->

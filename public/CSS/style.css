@@ -66,15 +66,6 @@ a {
     color: aliceblue;
 }
 
-/* a span:hover{
-    color:deeppink;
-} */
-
-/* .button_color{
-    color: deeppink;
-    background-color: deeppink;
-} */
-
 .navbarNav {
     background-color: purple;
 }
@@ -125,17 +116,19 @@ h1 {
     width: 100%;
 }
 
-#card {
+/*****************************/
+/*** Les classes "Card" : ***/
+/***************************/
+
+.card {
+    background-color: purple
+}
+
+/* #card {
     background-color: purple;
     color: white;
     transition: transform 1s;
-}
-
-/* Formulaire commande : */
-#cmde {
-    background-color: purple;
-    color: white;
-}
+} */
 
 #card:hover {
     -ms-transform: scale(1.15);
@@ -144,6 +137,12 @@ h1 {
     /* Safari 3-8 */
     transform: scale(1.15);
     transition: transform 3s;
+}
+
+/* Formulaire commande : */
+#cmde {
+    background-color: purple;
+    color: white;
 }
 
 /* Lien sur card : */
@@ -160,15 +159,19 @@ label {
     /* background-color: purple; */
 }
 
+/*****************************/
+/*** Boutons et Hoovers : ***/
+/***************************/
+
 /* Boutons formulaire : */
 
-input.btn_form,
+/* input.btn_form,
 a.btn_form2,
 a.btn {
     background: purple;
     color: white;
     border-color: purple;
-}
+} 
 
 a.btn_form,
 a.btn_comm,
@@ -182,9 +185,16 @@ a.btn_com2 {
     background-color: white;
     color: purple;
     border-color: white;
+} */
+
+.btn_cart {
+    background-color: white;
+    color: purple;
+    border-color: white;
 }
 
 /* Hover boutons a : */
+.btn_cart:hover,
 a.btn_form:hover,
 a.btn_form2:hover,
 a.btn_comm:hover,

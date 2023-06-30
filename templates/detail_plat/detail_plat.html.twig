@@ -1,54 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detail_Plat
+{% block title %}Detail_plat
 {% endblock %}
 
 {% block body %}
-	{# {{dump(plat)}} #}
+	<div class="container col-xs-7 col-12 div_cat mt-5 py-5">
 
-	<div class="m-auto my-5" id="" style="width: 18rem; background-color:purple; border-radius:10px; padding:10px">
-		<span class="d-block text-center text-white mb-3">
+		<div class="d-flex flex-wrap liste_cat">
+			<div class="m-auto my-5" id="" style="width: 18rem; background-color:purple; border-radius:10px; padding:10px">
+				<span class="d-block text-center text-white mb-3">
 
-			<h5 class="text-center my-3">
-				<strong>"
-					{{ plat.libelle |upper }}
-					"</strong>
-			</h5>
-			<img src="{{'/images_the_district/food/' ~ plat.image}}" alt="image" srcset="" class="card-img-top img-fluid" style="border-radius:10px;">
+					<h5 class="text-center my-3">
+						<strong>"
+							{{ plat.libelle |upper }}
+							"</strong>
+					</h5>
+					<img src="{{'/images_the_district/food/' ~ plat.image}}" alt="image" srcset="" class="card-img-top img-fluid" style="border-radius:10px;">
 
-			<h5 class="text-center mt-3">
-				<strong>"{{ plat.description}}"</strong>
-			</h5>
-			<h5 class="text-center my-3">
-				<strong>{{ plat.prix / 100 }}
-					&euro;
-				</strong>
-			</h5>
-			{% if plat.active > 0 %}
-				<a href="{{ path('panier_add', {id: plat.id}) }}" class="btn btn-success">Ajouter au panier</a>
-			{% else %}
-				<p class="text-danger">Temporairement en rupture de stock</p>
-			{% endif %}
-		</span>
+					<h5 class="text-center mt-3">
+						<strong>"{{ plat.description}}"</strong>
+					</h5>
+					<h5 class="text-center my-3">
+						<strong>{{ plat.prix}}
+							&euro;
+						</strong>
+					</h5>
+					{% if plat.active > 0 %}
+						<a href="{{ path('panier_add', {id: plat.id}) }}" class="btn btn_cart">Ajouter au panier</a>
+					{% else %}
+						<p class="text-danger">Temporairement en rupture de stock</p>
+					{% endif %}
+				</span>
+			</div>
+
+		</div>
 	</div>
-
-
-{% endblock %}
-
-{% block javascripts %}
-	<!-- Script pour la quantité : -->
-	<script>
-
-		function ajouterAuPanier() {
-var quantiteInput = document.getElementById("qte");
-var quantite = parseInt(quantiteInput.value);
-
-// Vérification de la quantité saisie
-if (quantite < 1 || quantite > 10) {
-alert("Veuillez saisir une quantité entre 1 et 20.");
-return;
-}
-alert("Article ajouté au panier avec succès !");
-}
-	</script>
 {% endblock %}

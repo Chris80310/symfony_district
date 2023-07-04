@@ -1,6 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil
-{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-sm-8 offset-sm-2">
+				<h1>Vos informations</h1>
+				<table class="table table-light table-hover">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Email</th>
+							<th>Telephone</th>
+							<th>Adresse</th>
+							<th>Ville</th>
+							<th>Code postal</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ informations.nom }}</td>
+							<td>{{ informations.prenom }}</td>
+							<td>{{ informations.email }}</td>
+							<td>{{ informations.telephone }}</td>
+							<td>{{ informations.adresse }}</td>
+							<td>{{ informations.ville }}</td>
+							<td>{{ informations.cp }}</td>
+							<td>
+								{# <a href="{{ path ('panier_delete', {id: item.plat.id}) }}" class="col-4 btn btn-danger">Modifier</a> #}
+								<a href="#" class="col btn btn-danger">Modifier</a>
+							</td>
 
-{% block body %}{% endblock %}
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

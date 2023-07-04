@@ -50,6 +50,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
+    // #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    // private $creer_date;
+
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
 
     private Collection $commandes;
@@ -60,6 +63,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        // $this->creer_date = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -196,6 +200,17 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    // public function getCreerDate(): ?\DateTimeImmutable
+    // {
+    //     return $this->creer_date;
+    // }
+
+    // public function setCreerDate(\DateTimeImmutable $creer_date): self
+    // {
+    //     $this->creer_date = $creer_date;
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Commande>

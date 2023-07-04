@@ -70,27 +70,31 @@
 								</a>
 							</li>
 
-							{% if app.user %}
-								<li class="nav-item">
-									<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="admin.php">
-										<span>
-											<strong>Admin</strong>
+							<ul class="nabar-nav ms-auto mb-2 mb-lg0">
+								{% if app.user %}
+									<li class="nav-item">
+										<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="admin.php">
+											<span>
+												<strong>Admin</strong>
+											</span>
+										</a>
+										<span class="">Connecté en tant que :
+											{{app.user.prenom}}
+											~
+											{{app.user.nom}}
 										</span>
-									</a>
-									<span class="">Connecté en tant que :
-										<b><?= $_SESSION['login']?></b>
-									</span>
-									<a class="btn btn-primary nav-link mx-5" href="deco.php" style="width:130px" name="connect" id="connect">Deconnexion</a>
-								</li>
-							{% else %}
-								<li class="nav-item">
-									<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('app_accueil')}}">
-										<span>
-											<strong>Connexion</strong>
-										</span>
-									</a>
-								</li>
-							{% endif %}
+										<a class="btn btn-primary nav-link mx-5" href="{{ path ('app_logout')}}" style="width:130px" name="connect" id="connect">Deconnexion</a>
+									</li>
+								{% else %}
+									<li class="nav-item">
+										<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('app_login')}}">
+											<span>
+												<strong>Connexion</strong>
+											</span>
+										</a>
+									</li>
+								{% endif %}
+							</ul>
 
 							<li class="nav-item">
 								<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('panier_index')}}">

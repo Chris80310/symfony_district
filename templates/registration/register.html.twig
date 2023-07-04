@@ -1,33 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur
+{% block title %}Inscription
 {% endblock %}
 
 {% block body %}
-	{% for flash_error in app.flashes('verify_email_error') %}
-		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-	{% endfor %}
 
-	<h1 class="mt-5" style="color: black;">Utilisateur</h1>
+	<section class="container">
+		<div class="row">
+			<div class="col">
+				{% for flash_error in app.flashes('verify_email_error') %}
+					<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+				{% endfor %}
 
-	<div class="row text-center">
-		{{ form_start(registrationForm) }}
+				<h1 class="mt-5" style="color: black;">Inscription</h1>
 
-		{# <div class="row"> #}
-		<div class="col-2 mx-auto mb-2 mt-4">
-			{{ form_row(registrationForm.email, {'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
-		</div>
+				<div class="row text-center">
+					{{ form_start(registrationForm) }}
 
-		<div class="col-2 mx-auto mb-2 mt-4">
-			{{ form_row(registrationForm.plainPassword, {'label': 'Mot de passe : ', 'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
+					<fieldset class="mb-3">
+						<legend>Mon identité</legend>
+						{{ form_row(registrationForm.nom) }}
+						{{ form_row(registrationForm.prenom) }}
+						{{ form_row(registrationForm.email) }}
+						{{ form_row(registrationForm.telephone) }}
+					</fieldset>
 
-			<div class="col-8 mx-auto mb-2 mt-4" style="color: black;">
-				{{ form_row(registrationForm.agreeTerms, {'label': 'Accepter les conditions', 'label_attr': {'class': 'txt_contact'}}) }}
+					<fieldset class="mb-3">
+						<legend>Mes coordonnées</legend>
+						{{ form_row(registrationForm.adresse) }}
+						{{ form_row(registrationForm.cp) }}
+						{{ form_row(registrationForm.ville) }}
+					</fieldset>
+
+					{{form_row(registrationForm.plainPassword) 
+		
+					}}
+					{{ form_row(registrationForm.agreeTerms) }}
+
+
+					<button type="submit" class="btn btn-primary btn-lg my-3">Comfirmer
+					</button>
+					{{ form_end(registrationForm) }}
+
+				</div>
 			</div>
-		</div><br>
-
-		<button type="submit" class="btn btn-primary">Comfirmer</button>
-		{{ form_end(registrationForm) }}
-	</div>
-
-{% endblock %}
+		</section>
+	{% endblock %}

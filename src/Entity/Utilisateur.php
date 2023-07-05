@@ -45,7 +45,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $adresse = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $cp = null;
+    private ?int $cp = null;
 
     #[ORM\Column(length: 50)]
     private ?string $ville = null;
@@ -158,12 +158,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCp(): ?string
+    public function getCp(): ?int
     {
         return $this->cp;
     }
 
-    public function setCp(string $cp): self
+    public function setCp(int $cp): self
     {
         $this->cp = $cp;
 

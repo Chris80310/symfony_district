@@ -70,31 +70,32 @@
 								</a>
 							</li>
 
-							<ul class="nabar-nav ms-auto mb-2 mb-lg0">
-								{% if app.user %}
-									<li class="nav-item">
-										<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="admin.php">
-											<span>
-												<strong>Admin</strong>
-											</span>
-										</a>
-										<span class="">Connecté en tant que :
-											{{app.user.prenom}}
-											~
+
+							{% if app.user %}
+								<li class="nav-item">
+									<a class="nav-link mx-5" href="{{ path ('app_profil')}}" style="color:white" name="connect" id="connect" href="admin.php">
+										<span class="">
+											<strong>Connecté en tant que :
+											</strong>
 											{{app.user.nom}}
+											~
+											{{app.user.prenom}}
 										</span>
-										<a class="btn btn-primary nav-link mx-5" href="{{ path ('app_logout')}}" style="width:130px" name="connect" id="connect">Deconnexion</a>
-									</li>
-								{% else %}
-									<li class="nav-item">
-										<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('app_login')}}">
-											<span>
-												<strong>Connexion</strong>
-											</span>
-										</a>
-									</li>
-								{% endif %}
-							</ul>
+									</a>
+									<a class="btn btn-primary nav-link mx-5" href="{{ path ('app_logout')}}" style="color:white" name="connect" id="connect">
+										<strong>Deconnexion</strong>
+									</a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('app_login')}}">
+										<span>
+											<strong>Connexion</strong>
+										</span>
+									</a>
+								</li>
+							{% endif %}
+
 
 							<li class="nav-item">
 								<a class="nav-link mx-5" style="color:white" name="connect" id="connect" href="{{path ('panier_index')}}">
@@ -108,14 +109,18 @@
 									</span>
 								</a>
 							</li>
-
-							<li class="nav-item">
-								<form method="post" action="{{ path('app_search') }}" class="float-right" role="search">
-									<input class="search" name="search" type="search" placeholder="rechercher" aria-label="Search">
-									<button class="btn btn-outline-success" type="submit">Rechercher</button>
-								</form>
-							</li>
 						</ul>
+						<span class="nav-item me-auto">
+							<form method="post" action="{{ path('app_search') }}" class="float-right" role="search">
+								<input class="search" name="search" type="search" placeholder="Rechercher" aria-label="Search">
+								<button class="btn btn-success" type="submit">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+										<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+									</svg>
+								</button>
+							</form>
+						</span>
+
 					</div>
 				</div>
 			</nav>

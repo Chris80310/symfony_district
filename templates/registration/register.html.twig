@@ -5,20 +5,25 @@
 
 {% block body %}
 
-	<section class="container">
+	<section class="container col-7 div_cat mt-5 py-5">
 		<div class="row">
 			<div class="col">
 				{% for flash_error in app.flashes('verify_email_error') %}
 					<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 				{% endfor %}
 
-				<h1 class="mt-5" style="color: black;">Inscription</h1>
+				<div class="col-4 col-xs-12 mx-auto my-5 cat_count rounded p-3">
+					<h1>Inscription</h1>
+				</div>
+
 
 				<div class="row text-center">
 					{{ form_start(registrationForm) }}
 
 					<fieldset class="mb-3">
-						<legend>Mon identité</legend>
+						<b>
+							<legend class="mb-5" style="color:white">Mon identité</legend>
+						</b>
 						{{ form_row(registrationForm.nom) }}
 						{{ form_row(registrationForm.prenom) }}
 						{{ form_row(registrationForm.email) }}
@@ -26,18 +31,18 @@
 					</fieldset>
 
 					<fieldset class="mb-3">
-						<legend>Mes coordonnées</legend>
+						<b>
+							<legend class="my-5" style="color:white">Mes coordonnées</legend>
+						</b>
 						{{ form_row(registrationForm.adresse) }}
 						{{ form_row(registrationForm.cp) }}
 						{{ form_row(registrationForm.ville) }}
 					</fieldset>
 
-					{{form_row(registrationForm.plainPassword) 
-		
-					}}
-					{{ form_row(registrationForm.agreeTerms) }}
-
-
+					{{form_row(registrationForm.plainPassword) }}
+					<br>
+					<b>{{ form_row(registrationForm.agreeTerms) }}</b>
+					<br>
 					<button type="submit" class="btn btn-primary btn-lg my-3">Comfirmer
 					</button>
 					{{ form_end(registrationForm) }}

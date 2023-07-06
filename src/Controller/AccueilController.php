@@ -63,4 +63,24 @@ class AccueilController extends AbstractController
             'plat' => $plat,
         ]);
     }
+
+    // Politique de confidentialité : 
+
+    #[Route('/confid', name: 'app_confid')]
+    public function politique_confidentialite(): Response
+    {
+        return $this->render('accueil/confid.html.twig', [
+            'controller_name' => 'AccueilController',
+        ]);
+    }
+
+    // Mentions légales :
+
+    #[Route('/mentions', name: 'app_mentions')]
+    public function mentions_legales(): Response
+    {
+        return $this->render('accueil/mentions.html.twig', [
+            'controller_name' => 'AccueilController',
+        ]);
+    }
 }

@@ -51,8 +51,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Voir les catégories', 'fas fa-eye', Categorie::class),
             MenuItem::linkToCrud('Ajouter une catégorie', 'fas fa-plus', Categorie::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Modifier une catégorie', 'fas fa-plus', Categorie::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Supprimer une catégorie', 'fas fa-plus', Categorie::class)->setAction(Crud::PAGE_NEW),
         ]);
 
         yield MenuItem::section('Plats');
@@ -60,8 +58,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Voir les plats', 'fas fa-eye', Plat::class),
             MenuItem::linkToCrud('Ajouter un plat', 'fas fa-plus', Plat::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Modifier un plat', 'fas fa-plus', Plat::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Supprimer un plat', 'fas fa-plus', Plat::class)->setAction(Crud::PAGE_NEW),
         ]);
 
         yield MenuItem::section('Commandes');
@@ -69,16 +65,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Voir les commandes', 'fas fa-eye', Commande::class),
             MenuItem::linkToCrud('Modifier une Commande', 'fas fa-plus', Commande::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Supprimer une Commande', 'fas fa-plus', Commande::class)->setAction(Crud::PAGE_NEW),
         ]);
 
-        yield MenuItem::section('Utilisateurs');
+        // yield MenuItem::section('Utilisateurs');
 
-        yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Voir les utilisateurs', 'fas fa-eye', Utilisateur::class),
-            MenuItem::linkToCrud('Ajouter un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Modifier un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Supprimer un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
-        ]);
+        // yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
+        //     MenuItem::linkToCrud('Voir les utilisateurs', 'fas fa-eye', Utilisateur::class),
+        //     MenuItem::linkToCrud('Ajouter un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
+        //     // MenuItem::linkToCrud('Modifier un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
+        //     // MenuItem::linkToCrud('Supprimer un utilisateur', 'fas fa-plus', Utilisateur::class)->setAction(Crud::PAGE_NEW),
+        // ]);
     }
 }

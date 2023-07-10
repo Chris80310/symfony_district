@@ -4,25 +4,32 @@ namespace App\Controller\Admin;
 
 use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
+class UtilisateurCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return Utilisateur::class;
+    }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPaginatorPageSize(10);
+    }
 
-
-// public function configureFields(string $pageCategorie): iterable
-// {
-//     return [
-//         IdField::new('id')->hideOnForm(),
-//         TextField::new('libelle'),
-//         ImageField::new('image')
-//             ->setBasePath('images_the_district/category/')
-//             ->setUploadDir('public/images_the_district/category'),
-//         BooleanField::new('active'),
-
-//         // DateTimeField::new('updatedAt')->hideOnForm(),
-//         // DateTimeField::new('createdAt')->hideOnForm(),
-//         // TextEditorField::new('description');
-//     ];
-// }
+    public function configureFields(string $pageUser): iterable
+    {
+        yield IdField::new('id')->onlyOnIndex();
+        yield TextField::new('email')->onlyOnIndex();
+        yield TextField::new('nom');
+        yield TextField::new('prenom');
+        yield TextField::new('telephone');
+        yield TextField::new('adresse');
+        yield TextField::new('cp');
+        yield TextField::new('ville');
+    }
+}

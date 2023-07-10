@@ -4,11 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\Plat;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -40,6 +42,8 @@ class PlatCrudController extends AbstractCrudController
                 ->setBasePath('images_the_district/food/')
                 ->setUploadDir('public/images_the_district/food'),
             TextEditorField::new('description'),
+            MoneyField::new('prix')->setCurrency('EUR'),
+            AssociationField::new('categorie'),
             BooleanField::new('active'),
         ];
     }

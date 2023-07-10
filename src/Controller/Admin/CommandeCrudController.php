@@ -45,11 +45,6 @@ class CommandeCrudController extends AbstractCrudController
                 ->setFormTypeOption('grouping', true),
             IntegerField::new('etat'),
             AssociationField::new('utilisateur')->onlyOnIndex(),
-
-
-            // ImageField::new('image')
-            //     ->setBasePath('images_the_district/food/')
-            //     ->setUploadDir('public/images_the_district/food'),
         ];
     }
 }

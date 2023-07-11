@@ -5,26 +5,20 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\DemoFormType;
 use App\Form\ContactFormType;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Mailer\MailerInterface;
 use App\Service\MailService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        MailerInterface $mailer
-    ): Response
-    //  MailerInterface $mailer, 
-
+    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, MailService $ms): Response
     {
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
@@ -38,24 +32,18 @@ class ContactController extends AbstractController
             //on stocke les données récupérées dans la variable $message
             $message = $data;
 
-            // $entityManager->persist($message);
-            // $entityManager->flush();
-            // $expediteur = $message->getEmail();
-            // $destinataire = 'admin@the_district.fr';
-            // $sujet = $message->getObjet();
-            // $message = $message->getMessage();
+            //persistance des données
+            $entityManager->persist($message);
+            $entityManager->flush();
 
-            $email = (new TemplatedEmail())
-                ->from('admin@the_district.fr')
-                ->to(new Address($data->getEmail()))
-                ->subject($data->getObjet())
-                ->text($data->getMessage());
-            $mailer->send($email);
+            $expediteur = $message->getEmail();
+            $destinataire = 'admin@the_district.fr';
+            $sujet = $message->getObjet();
+            $message = $message->getMessage();
 
-            // $email = $ms->send($mailer, $expediteur, $destinataire, $sujet, $message);
-            // Redirection vers accueil
-
-            return $this->redirectToRoute('app_accueil');
+            //envoi de mail avec notre service MailService
+            $email = $ms->sendMail($expediteur, $destinataire, $sujet, $message);
+            //            dd($message->getEmail());
         }
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
@@ -63,7 +51,3 @@ class ContactController extends AbstractController
         ]);
     }
 }
-
-// nous utilisons la méthode handleRequest() pour traiter la requête HTTP actuelle et valider les données soumises.
-// if ($form->isSubmitted() - Si le formulaire est soumis et
-// && $form->isValid()) si le formulaire est valide, nous pouvons accéder aux données du formulaire à l'aide de la méthode getData().

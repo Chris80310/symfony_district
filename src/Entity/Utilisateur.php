@@ -267,4 +267,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     // {
     //     return $this->prenom;
     // }
+
+    // public function __toString()
+    // {
+    //     return $this->nom;
+    // }
+    public function __toString()
+    {
+        return $this->nom;
+    }
 }

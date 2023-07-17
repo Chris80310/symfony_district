@@ -137,6 +137,7 @@ class PanierController extends AbstractController
     // #[route('/valider_panier', name: 'app_comfirm_commande')]
     public function validerAllItems(Request $request, UtilisateurRepository $userRepo,  MailerInterface $mi, DetailRepository $dr)
     {
+        // $userMail = $this->getUser()->getUserIdentifier();
         $userMail = $this->getUser()->getUserIdentifier();
         $userData = $userRepo->findOneBy(["email" => $userMail]);
 
@@ -170,14 +171,15 @@ class PanierController extends AbstractController
         //envoi vers service mail :
 
         $expediteur = 'the_district@contact.fr';
-        $destinataire = $userData->getEmail();
+        $destinataire = $userRepo->findOneBy(["email" => $userMail]);
+
         $sujet = 'Commande detail';
 
         $lignes_details = $dr->findBy(["commande" => $cmd->getId()]);
 
         $email = (new TemplatedEmail())
             ->from($expediteur)
-            ->to($destinataire)
+            ->to($userMail)
             ->subject($sujet)
 
             ->htmlTemplate('panier/confirm_commande.html.twig')

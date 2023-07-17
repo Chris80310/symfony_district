@@ -5,23 +5,33 @@ namespace App\Entity;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    // #[Groups(['read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['read'])]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?string $image = null;
 
     #[ORM\Column]
+    #[Groups(['read'])]
     private ?bool $active = null;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Plat::class)]

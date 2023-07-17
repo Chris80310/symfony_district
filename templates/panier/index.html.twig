@@ -5,7 +5,7 @@
 
 {% block body %}
 	<div class="container">
-		<form action="{{ path('order_index') }}">
+		<form action="#">
 			<section class="row">
 				<div class="col-12">
 
@@ -64,8 +64,9 @@
 							<tr>
 								<td colspan="6" class="text-center">
 									{% if total > 0 %}
-										{# <a href="{{ path ('app_order') }}" class="col-2 mx-3 btn btn-success">Valider la commande</a> #}
-										<button class="col-2 mx-3 btn btn-success" type="submit">Valider mon panier</button>
+										{# <a href="{{ path ('app_confirm_commande') }}" class="col-2 mx-3 btn btn-success">Valider la commande</a> #}
+										<a href="{{ path ('app_valider_panier') }}" class="col-2 mx-3 btn btn-success">Valider la commande</a>
+										{# <button class="col-2 mx-3 btn btn-success" type="submit">Valider mon panier</button> #}
 									{% endif %}
 
 									<a href="{{ path ('app_plats') }}" class="col-2 mx-3 btn btn-success">Retour aux plats</a>

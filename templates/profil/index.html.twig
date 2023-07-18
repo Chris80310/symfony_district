@@ -45,15 +45,24 @@
 						</tr>
 					</tbody>
 				</table>
+				{% if is_granted ('ROLE_AMIN') %}
+					<div class="col-8 col-xs6 mx-auto my-5 cat_count rounded p-3">
+						<h1>Les commandes passées :</h1>
+					</div>
+					{% for commande in app.user.commandes %}
+						<div class="col-xs1">Plat :</div>
+						{# <div class="col-xs3">{{ plat.libelle }}</div> #}
+					{% endfor %}
 
-				<div class="col-8 col-xs6 mx-auto my-5 cat_count rounded p-3">
-					<h1>Vos commandes passées :</h1>
-				</div>
-				{% for commande in app.user.commandes %}
-					<div class="col-xs1">Plats :</div>
-					<div class="col-xs3">{{ plat.libelle }}</div>
-				{% endfor %}
-
+				{% else %}
+					<div class="col-8 col-xs6 mx-auto my-5 cat_count rounded p-3">
+						<h1>Vos commandes passées :</h1>
+					</div>
+					{% for commande in app.user.commandes %}
+						<div class="col-xs1">Plat :</div>
+						{# <div class="col-xs3">{{ plat.libelle }}</div> #}
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 	</div>

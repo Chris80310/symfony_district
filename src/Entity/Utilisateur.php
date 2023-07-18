@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
@@ -56,6 +57,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     // private $creer_date;
 
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
+    // #[ORM\OneToMany('cascade={"remove"}')]
 
     private Collection $commandes;
 
@@ -270,10 +272,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     //     return $this->prenom;
     // }
 
-    // public function __toString()
-    // {
-    //     return $this->nom;
-    // }
     public function __toString()
     {
         return $this->nom;

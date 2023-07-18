@@ -12,24 +12,23 @@ Voici le récapitulatif de votre commande du
 </p>
 
 {% for detail in details %}
-
 	<div>
 
 		<p>{{detail.quantite}}
 			{{detail.plat.libelle}}
 			<br><br>
 			<div>
-				<img src="{{ email.image('@images/food/' ~ detail.plat.image) }}" alt="Logo"></div>
+				<img class="rounded" src="{{ email.image('@images/food/' ~ detail.plat.image) }}" alt="Logo"></div>
 		</p>
 	</div>
-
 {% endfor %}
 <br>
+
 <p>Total de la commande:
 	{{commande.total}}
-	euros
+	&euro;
 </p>
 <br><br>
 <p>
-	Merci pour votre visite!!
+	Merci pour votre commande chez The District. A bientot !
 </p>

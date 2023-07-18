@@ -124,7 +124,7 @@ class Jeu1 extends Fixture
         $user1->setAdresse("11 rue du moulin");
         $user1->setCp("80000");
         $user1->setVille("amiens");
-        $user1->setRoles("role1");
+        $user1->setRoles(["ROLE_1"]);
 
         $manager->persist($user1);
 
@@ -137,7 +137,7 @@ class Jeu1 extends Fixture
         $user2->setAdresse("22 avenue de la place");
         $user2->setCp("80000");
         $user2->setVille("abbeville");
-        $user2->setRoles("role2");
+        $user2->setRoles(["ROLE_2"]);
 
         $manager->persist($user2);
 

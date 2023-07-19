@@ -167,7 +167,7 @@ class PanierController extends AbstractController
 
         $session = $this->requestStack->getSession();
 
-        //envoi vers service mail :
+        //envoi vers le service mail :
 
         $expediteur = 'the_district@contact.fr';
         $destinataire = $userRepo->findOneBy(["email" => $userMail]);
@@ -197,7 +197,7 @@ class PanierController extends AbstractController
 
         //Redirection vers accueil :
 
-        $this->addFlash('success', 'Un récapitulatif de votre comande a été envoyé sur votre messagerie! Pensez à consultez vos spams.',);
+            $this->addFlash('success', 'Merci pour votre commande. Un récapitulatif vient d\'être envoyé sur votre messagerie.');
 
         return $this->redirectToRoute('app_accueil',);
     }

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\RegistrationFormType;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use App\Entity\User;
 use App\Form\UserType;
 
@@ -74,15 +75,25 @@ class ProfilController extends AbstractController
     // }
 
     // #[Route('/profil/modif_profil/{id}', name: 'app_profil')]
-    // public function modif_profil(Request $request, User $user): Response
+    // public function modif_profil($id, Request $request, User $user, ManagerRegistry $mr): Response
     // {
-    //     $identifiant = $this->getUser()->getUserIdentifier();
-    //     if ($identifiant) {
-    //         $info = $this->userRepo->findOneBy(["email" => $identifiant]);
+    //     dump($id);die;
+    //     $user = new User();
+    //     $form = $this->createForm(UserType::class, $user);
+    //     $user->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $user = $form->getData();
+    //         $user->setIsDeleted(false);
+    //         $em = $mr->getManager();
+
+    //         $em->persist($user);
+    //         $em->flush();
+
+    //         return $this->redirectToRoute ('profil/index.html.twig'); 
     //     }
 
     //     return $this->render('profil/modif_profil.html.twig', [
-    //         'informations' => $info
+    //         'form' => $form->createView()
     //     ]);
     // }
 }

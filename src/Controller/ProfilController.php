@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\RegistrationFormType;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\User;
+use App\Form\UserType;
 
 class ProfilController extends AbstractController
 {
@@ -53,4 +57,32 @@ class ProfilController extends AbstractController
             'informations' => $info
         ]);
     }
+
+    // Modifier le profil :
+
+    // #[Route('/profil/modif_profil', name: 'app_profil')]
+    // public function modif_profil(): Response
+    // {
+    //     $identifiant = $this->getUser()->getUserIdentifier();
+    //     if ($identifiant) {
+    //         $info = $this->userRepo->findOneBy(["email" => $identifiant]);
+    //     }
+
+    //     return $this->render('profil/modif_profil.html.twig', [
+    //         'informations' => $info
+    //     ]);
+    // }
+
+    // #[Route('/profil/modif_profil/{id}', name: 'app_profil')]
+    // public function modif_profil(Request $request, User $user): Response
+    // {
+    //     $identifiant = $this->getUser()->getUserIdentifier();
+    //     if ($identifiant) {
+    //         $info = $this->userRepo->findOneBy(["email" => $identifiant]);
+    //     }
+
+    //     return $this->render('profil/modif_profil.html.twig', [
+    //         'informations' => $info
+    //     ]);
+    // }
 }

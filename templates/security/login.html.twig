@@ -6,7 +6,7 @@
 {% block body %}
 
 
-	<section class="container col-8 div_cat mt-5 py-5">
+	<section class="container col-lg-4 div_cat mt-5 py-5">
 		<div class="row">
 			<div class="col">
 				<form method="post">
@@ -22,7 +22,7 @@
 						</div>
 					{% endif %}
 
-					<div class="col-xs-3 col-3 text-center mx-auto my-5 cat_count rounded p-3">
+					<div class="col-sm-6 text-center mx-auto my-5 cat_count rounded p-3">
 						<h1>Connexion</h1>
 					</div>
 
@@ -34,10 +34,10 @@
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 					<div class="col-12 text-center">
-						<button class="col-2 btn btn-lg btn-primary mt-3 mx-3" type="submit">
-							Me connecter
+						<button class="col-sm-4 btn btn-lg btn-primary mt-3 mx-3" type="submit">
+							Connection
 						</button>
-						<a href="{{ path('app_register') }}" class=" col-2 btn btn-lg btn-primary mt-3 mx-3">M'inscrire</a>
+						<a href="{{ path('app_register') }}" class=" col-sm-4 btn btn-lg btn-primary mt-3 mx-3">M'inscrire</a>
 					</div>
 				</form>
 			</div>

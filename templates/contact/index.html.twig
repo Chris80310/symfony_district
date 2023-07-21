@@ -5,9 +5,9 @@
 
 {% block body %}
 
-	<div class="container col-7 col-xs7 div_cat mt-5 py-5">
+	<div class="container col-10 div_cat mt-5 py-5">
 
-		<div class=" col-2 col-xs2 m-auto mb-5 cat_count rounded p-3">
+		<div class=" col-lg-2 m-auto mb-5 cat_count rounded p-3">
 			<h1>Contact</h1>
 		</div>
 
@@ -18,15 +18,15 @@
 			</div>
 
 			<div class="row">
-				<div class="col-8 mx-auto mb-2 mt-4">
+				<div class="col-lg-8 mx-auto mb-2 mt-4">
 					{{ form_row(form.objet, {'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
 					{{ form_errors(form.objet) }}
 				</div>
-				<div class="col-8 mx-auto mb-2">
+				<div class="col-lg-8 mx-auto mb-2">
 					{{ form_row(form.email, {'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
 					{{ form_errors(form.objet) }}
 				</div>
-				<div class="col-8 mx-auto mb-2">
+				<div class="col-lg-8 mx-auto mb-2">
 					{{ form_row(form.message, {'label_attr': {'class': 'txt_contact'}, 'attr': {'class': 'form-control'}}) }}
 					{{ form_errors(form.objet) }}
 				</div>

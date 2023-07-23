@@ -17,37 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// class Panier
-// {
-//     private RequestStack $requestStack;
-
-//     public function _construct(RequestStack $requestStack)
-//     {
-//         $this->requestStack = $requestStack;
-//     }
-//     public function addToCart(int $id): void
-//     {
-
-//         $panier =  $this->requestStack->getSession()->get('panier', []);
-//         if (!empty($panier[$id])) {
-//             $panier[$id]++;
-//         } else {
-//             $panier[$id] = 1;
-//         }
-
-//         $this->getSession()->set('panier', $panier);
-//     }
-
-//     private function getSession(): SessionInterface
-//     {
-//         return $this->requestStack->getSession();
-//     }
-// }
-
-
 class PanierService
 {
-
     private $requestStack;
     private $PlatRepository;
     private $em;
@@ -59,13 +30,15 @@ class PanierService
         $this->em = $em;
     }
 
+    //Panier ajout :
     public function addToCart(int $id): void
     {
-
         $panier =  $this->requestStack->getSession()->get('panier', []);
+        // Si le panier n'est pas vide, on incrémente :
         if (!empty($panier[$id])) {
             $panier[$id]++;
         } else {
+            // Sinon on ajoute le produit :
             $panier[$id] = 1;
         }
 
@@ -77,30 +50,29 @@ class PanierService
         return $this->requestStack->getSession();
     }
 
-
     public function panier()
     {
         $session = $this->requestStack->getSession();
         $panier = $session->get('panier', []);
-        $paniertotal = [];
+        $totalPanier = [];
 
         foreach ($panier as $id => $quantite) {
-            $paniertotal[] = [
+            $totalPanier[] = [
                 'plat' => $this->PlatRepository->find($id),
                 'quantite' => $quantite
             ];
         }
-        return $paniertotal;
+        return $totalPanier;
     }
 
+    // Total panier :
     public function getTotal()
     {
         $session = $this->requestStack->getSession();
-
-        $paniertotal = $this->panier();
+        $totalPanier = $this->panier();
 
         $total = 0;
-        foreach ($paniertotal as $item) {
+        foreach ($totalPanier as $item) {
             $totalItem = $item['plat']->getPrix() * $item['quantite'];
             $total += $totalItem;
         }
@@ -113,6 +85,7 @@ class PanierService
         $session = $this->requestStack->getSession();
         $panier = $session->get('panier', []);
 
+        // On incrémente la quantité : 
         if (!empty($panier[$id])) {
             $panier[$id]++;
         } else {
@@ -128,7 +101,7 @@ class PanierService
         $session = $this->requestStack->getSession();
         $panier = $session->get('panier', []);
 
-        // On retire le produit du panier s'il n'y a qu'un seul exemplaire sinon on réduit sa quantité : 
+        // On retire le produit du panier s'il n'y a qu'un seul exemplaire sinon on décrémente sa quantité : 
         if (!empty($panier[$id])) {
             if ($panier[$id] > 1)
                 $panier[$id]--;
@@ -142,7 +115,7 @@ class PanierService
 
     public function deleteItems($id)
     {
-
+        //Supprimer le produit du panier :
         $session = $this->requestStack->getSession();
         $panier = $session->get('panier', []);
 

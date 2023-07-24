@@ -53,8 +53,15 @@ class PanierService
     public function panier()
     {
         $session = $this->requestStack->getSession();
-        $panier = $session->get('panier', []);
-        $totalPanier = [];
+        $panier =  $session->get('panier', []);
+        if (empty($Panier)) {
+            $panier = [];
+            $Panier = $session->set('panier', $panier);
+        };
+
+        $Panier = $session->get('panier', []);
+        $totalPanier = $Panier;
+
 
         foreach ($panier as $id => $quantite) {
             $totalPanier[] = [

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Utilisateur;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Mailer\MailerInterface;
 use App\Controller\MailService;
 use App\Entity\Commande;
@@ -26,8 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Mime\Address;
 use DateTime;
-
-
+use phpDocumentor\Reflection\Types\Null_;
 
 class PanierController extends AbstractController
 {
@@ -133,19 +134,41 @@ class PanierController extends AbstractController
         $this->ps = $ps;
     }
 
+    #[isGranted('ROLE_USER')]
     #[route('/valider_panier', name: 'app_valider_panier')]
     // #[route('/valider_panier', name: 'app_comfirm_commande')]
-    public function validerAllItems(Request $request, UtilisateurRepository $userRepo,  MailerInterface $mi, DetailRepository $dr)
+    public function validerAllItems(Request $request, Utilisateur $user, Security $security, UtilisateurRepository $userRepo,  MailerInterface $mi, DetailRepository $dr)
     {
-        $userMail = $this->getUser()->getUserIdentifier();
-        $userData = $userRepo->findOneBy(["email" => $userMail]);
+        //si personne n'est connecté, on renvoie sur la page plat
+        /*
+            //on recupere les informations de la personne connectée
+            $userMail = $security->getUser();
+
+            //on regarde si il y a des informations pour savoir si une personne est connectée
+            if ($userMail == Null) {
+                //on renvoye sur l'index si personne n'est connecté
+                return $this->redirectToRoute('app_plats');
+                //j'ajoute un message flash pour informer l'utilisateur qu'il faut qu'il soit connecté 
+            }
+            //On stocke l'adresse mail de la personne connecte dans la variable userData
+            $userData = $userMail->getEmail();
+        */
+
+        //on regarde si l'user est connecté
+        $userMail = $security->getUser();
+        //on recupère le mail en base de données
+        $monUser = $userMail->getUserIdentifier();
+        //l'utilisateur recupère de la base de données
+
+        $User_Real = $userRepo->findOneBy(['email' => $monUser]);
+
 
         $panierTotal = $this->ps->panier();
         $total = $this->ps->getTotal();
 
         $cmd = new Commande();
         $cmd->setDateCommande(new DateTime());
-        $cmd->setUtilisateur($userData);
+        $cmd->setUtilisateur($User_Real);
         $cmd->setTotal($total);
         $cmd->setEtat(1);
 
@@ -170,7 +193,7 @@ class PanierController extends AbstractController
         //envoi vers le service mail :
 
         $expediteur = 'the_district@contact.fr';
-        $destinataire = $userRepo->findOneBy(["email" => $userMail]);
+        $destinataire = $monUser;
 
         $sujet = 'Commande detail';
 
@@ -178,7 +201,7 @@ class PanierController extends AbstractController
 
         $email = (new TemplatedEmail())
             ->from($expediteur)
-            ->to($userMail)
+            ->to($destinataire)
             ->subject($sujet)
 
             ->htmlTemplate('panier/confirm_commande.html.twig')
@@ -186,7 +209,7 @@ class PanierController extends AbstractController
             ->context([
                 'commande' => $cmd,
                 'details' => $lignes_details,
-                'user' => $userData
+                'user' => $User_Real
             ]);
 
         $mi->send($email);
@@ -197,7 +220,7 @@ class PanierController extends AbstractController
 
         //Redirection vers accueil :
 
-            $this->addFlash('success', 'Merci pour votre commande. Un récapitulatif vient d\'être envoyé sur votre messagerie.');
+        $this->addFlash('success', 'Merci pour votre commande. Un récapitulatif vient d\'être envoyé sur votre messagerie.');
 
         return $this->redirectToRoute('app_accueil',);
     }

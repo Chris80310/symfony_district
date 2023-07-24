@@ -97,7 +97,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-
     /**
      * @see PasswordAuthenticatedUserInterface
      */

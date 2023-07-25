@@ -141,6 +141,19 @@ class Jeu1 extends Fixture
 
         $manager->persist($user2);
 
+        $user3 = new Utilisateur();
+        $user3->setEmail("chris80@service.com");
+        $user3->setPassword('123456');
+        $user3->setNom("chamb");
+        $user3->setPrenom("chris");
+        $user3->setTelephone("0123456789");
+        $user3->setAdresse("33 rue courgette");
+        $user3->setCp("80000");
+        $user3->setVille("amiens");
+        $user3->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
+
+        $manager->persist($user3);
+
         $commande1->addDetail($detail1);
         $commande2->addDetail($detail2);
 

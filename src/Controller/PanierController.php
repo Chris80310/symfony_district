@@ -43,13 +43,15 @@ class PanierController extends AbstractController
 
         foreach ($panier as $id => $quantite) {
             $plat = $platRepository->find($id);
-
+            // dd($plat);
             $data[] = [
                 'plat' => $plat,
                 'quantite' => $quantite
             ];
             $total += $plat->getPrix() * $quantite;
         }
+
+
         return $this->render('panier/index.html.twig', ['data' => $data, 'total' => $total]);
     }
 

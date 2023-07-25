@@ -42,7 +42,7 @@ class PlatCrudController extends AbstractCrudController
                 ->setBasePath('images_the_district/food/')
                 ->setUploadDir('public/images_the_district/food'),
             TextEditorField::new('description'),
-            MoneyField::new('prix')->setCurrency('EUR'),
+            MoneyField::new('prix')->setCurrency('EUR')->setStoredAsCents(false),
             AssociationField::new('categorie'),
             BooleanField::new('active'),
         ];

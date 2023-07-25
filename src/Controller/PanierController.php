@@ -138,8 +138,7 @@ class PanierController extends AbstractController
 
     #[isGranted('ROLE_USER')]
     #[route('/valider_panier', name: 'app_valider_panier')]
-    // #[route('/valider_panier', name: 'app_comfirm_commande')]
-    public function validerAllItems(Request $request, Utilisateur $user, Security $security, UtilisateurRepository $userRepo,  MailerInterface $mi, DetailRepository $dr)
+    public function validAllItems(Request $request, Utilisateur $user, Security $security, UtilisateurRepository $userRepo,  MailerInterface $mi, DetailRepository $dr)
     {
         //si personne n'est connecté, on renvoie sur la page plat
         /*
@@ -163,7 +162,6 @@ class PanierController extends AbstractController
         //l'utilisateur recupère de la base de données
 
         $User_Real = $userRepo->findOneBy(['email' => $monUser]);
-
 
         $panierTotal = $this->ps->panier();
         $total = $this->ps->getTotal();
@@ -224,6 +222,7 @@ class PanierController extends AbstractController
 
         $this->addFlash('success', 'Merci pour votre commande. Un récapitulatif vient d\'être envoyé sur votre messagerie.');
 
-        return $this->redirectToRoute('app_accueil',);
+        // return $this->redirectToRoute('app_accueil');
+        return $this->redirectToRoute('panier_index');
     }
 }

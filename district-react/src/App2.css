@@ -1,0 +1,245 @@
+@media(max-width:480px) {
+    .div_discs {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .div_header,
+    .detail_disc {
+        height: auto;
+    }
+}
+
+@media(max-width:767px) {
+    .div_discs {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .div_header,
+    .detail_disc {
+        height: auto;
+    }
+}
+
+@media(min-width:768px) {
+
+    .div_discs,
+    .div_header,
+    .detail_disc {
+        height: auto;
+    }
+}
+
+@media(min-width:992px) {
+
+    .div_discs,
+    .div_header,
+    .detail_disc {
+        height: auto;
+    }
+}
+
+@media(min-width:1200px) {
+
+    .div_discs,
+    .div_header,
+    .detail_disc {
+        height: auto;
+    }
+}
+
+body {
+    background: url("/images_the_district/food/spaghetti-legumes.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    /* height: 100%;  */
+}
+
+header {
+    background: url("/images_the_district/bg1.jpeg");
+    background-size: cover;
+    height: auto;
+}
+
+a {
+    color: aliceblue;
+}
+
+.navbarNav {
+    background-color: purple;
+}
+
+.btn_menu {
+    color: purple;
+}
+
+
+.bg_li {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+#titre_header {
+    color: white;
+}
+
+.div_cat {
+    background-color: rgba(0, 0, 0, 0.427);
+    border-radius: 10px;
+
+    /* filter:blur(4px);
+    -o-filter:blur(4px);
+    -ms-filter:blur(4px);
+    -moz-filter:blur(4px);
+    -webkit-filter:blur(4px); */
+}
+
+/* Titre : */
+.cat_count,
+.titre,
+.txt {
+    background-color: purple;
+    color: white;
+}
+
+.libelle {
+    background-color: purple;
+    color: white;
+}
+
+.cat_img {
+    /* border-radius : 10px; */
+    width: 100%;
+}
+
+/*****************************/
+/*** Les classes "Card" : ***/
+/***************************/
+
+.card {
+    background-color: purple
+}
+
+/* #card {
+    background-color: purple;
+    color: white;
+    transition: transform 1s;
+} */
+
+#card:hover {
+    -ms-transform: scale(1.15);
+    /* IE 9 */
+    -webkit-transform: scale(1.15);
+    /* Safari 3-8 */
+    transform: scale(1.15);
+    transition: transform 3s;
+}
+
+/* Formulaire commande : */
+#cmde {
+    background-color: purple;
+    color: white;
+}
+
+/* Lien sur card : */
+a.card_title:link {
+    text-decoration: none;
+}
+
+.card_title {
+    color: white;
+}
+
+label {
+    color: white;
+    /* background-color: purple; */
+}
+
+/*****************************/
+/*** Boutons et Hoovers : ***/
+/***************************/
+
+/* Boutons formulaire : */
+
+/* input.btn_form,
+a.btn_form2,
+a.btn {
+    background: purple;
+    color: white;
+    border-color: purple;
+} 
+
+a.btn_form,
+a.btn_comm,
+input.btn_comm {
+    background-color: white;
+    color: purple;
+    border-color: white;
+}
+
+a.btn_com2 {
+    background-color: white;
+    color: purple;
+    border-color: white;
+} */
+
+.btn_cart {
+    background-color: white;
+    color: purple;
+    border-color: white;
+}
+
+/* Hover boutons a : */
+.btn_cart:hover,
+a.btn_form:hover,
+a.btn_form2:hover,
+a.btn_comm:hover,
+/* Hover boutons input :  */
+input.btn_comm:hover,
+input.btn_form:hover,
+/* Hover card :  */
+.card:hover,
+.card-body:hover {
+    background-color: green;
+    border-color: green;
+}
+
+.a.span:hover {
+    background-color: green;
+    border-color: green;
+}
+
+a.btn_com2:hover {
+    background: purple;
+    color: white;
+    border-color: purple;
+}
+
+
+/* Formulaire contact : */
+.form {
+    border-width: 5px;
+    border-color: purple;
+    border-radius: 10px;
+}
+
+/* btn admin : */
+.btn_admin {
+    border-width: 5px;
+    border-color: purple;
+    border-radius: 10px;
+}
+
+.bg_admin {
+    background-color: rgba(0, 0, 0, 0.507);
+    color: white;
+}
+
+.txt_contact {
+    color: black;
+    font-size: x-large;
+}
